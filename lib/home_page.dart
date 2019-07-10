@@ -7,25 +7,36 @@ class HomePage extends StatefulWidget{ // creating a stateful widget
 
 class HomePageState extends State<HomePage>{
 
-  var num1="0", num2="0", ansStr='0', ans=0, oper='', flag=0 ;
-  var fontSize = 60.0;
+  var num1="0", num2="0", ansStr='0', ans=0, oper='', flag=0, displen=10 ;
+  var fontSize=60.0;
+
+  void chfontsize(){
+    setState(() {
+      if(ansStr.length <= displen ){
+        //fontSize = 60.0;
+        debugPrint('1-maxlen: ${displen}');
+        debugPrint('1-fontsize: ${fontSize}');
+        debugPrint('1-length: ${ansStr.length}');
+      }else{
+        fontSize = fontSize/2;
+        displen = displen * 2;
+        debugPrint('2-fontsize: ${fontSize}');
+      }
+    });
+  }
 
   void _clear() {
     setState(() {
-          num1="0"; num2="0"; ansStr='0'; ans=0; oper=''; flag=0 ;
+          num1="0"; num2="0"; ansStr='0'; ans=0; oper=''; flag=0; displen=10;
+          fontSize=60.0;
         });
   }
 
   void _disp() { // =
     setState(() {
           //num1="0"; num2="0"; ansStr='0'; ans=0; oper=''; flag=0 ;
-          if(ansStr.length > 9 ){
-            fontSize = 30.0;
-          }
-          if(ansStr.length <= 9 ){
-            fontSize = 60.0;
-          }
-        });
+          chfontsize();
+    });
   }
 
   void _plus() {
@@ -57,6 +68,7 @@ class HomePageState extends State<HomePage>{
           num1 += "9";
           ans = int.parse(num1);
           ansStr = "$ans";
+          chfontsize();
         });
   }
 
@@ -65,6 +77,7 @@ class HomePageState extends State<HomePage>{
           num1 += "8";
           ans = int.parse(num1);
           ansStr = "$ans";
+          chfontsize();
         });
   }
 
@@ -73,6 +86,7 @@ class HomePageState extends State<HomePage>{
           num1 += "7";
           ans = int.parse(num1);
           ansStr = "$ans";
+          chfontsize();
         });
   }
 
@@ -81,6 +95,7 @@ class HomePageState extends State<HomePage>{
           num1 += "6";
           ans = int.parse(num1);
           ansStr = "$ans";
+          chfontsize();
           });
   }
 
@@ -89,6 +104,7 @@ class HomePageState extends State<HomePage>{
           num1 += "5";
           ans = int.parse(num1);
           ansStr = "$ans";
+          chfontsize();
           });
   }
 
@@ -97,6 +113,7 @@ class HomePageState extends State<HomePage>{
           num1 += "4";
           ans = int.parse(num1);
           ansStr = "$ans";
+          chfontsize();
           });
   }
 
@@ -105,6 +122,7 @@ class HomePageState extends State<HomePage>{
           num1 += "3";
           ans = int.parse(num1);
           ansStr = "$ans";
+          chfontsize();
           });
   }
 
@@ -113,6 +131,7 @@ class HomePageState extends State<HomePage>{
           num1 += "2";
           ans = int.parse(num1);
           ansStr = "$ans";
+          chfontsize();
           });
   }
 
@@ -121,6 +140,7 @@ class HomePageState extends State<HomePage>{
           num1 += "1";
           ans = int.parse(num1);
           ansStr = "$ans"; 
+          chfontsize();
           });
     }
 
@@ -129,6 +149,7 @@ class HomePageState extends State<HomePage>{
           num1 += "0";
           ans = int.parse(num1);
           ansStr = "$ans";
+          chfontsize();
           });
     }
 
